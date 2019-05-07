@@ -1,6 +1,13 @@
 <template>
   <div class="container2">
-    <letter v-for="item in splitedTranslatedWordArray" :key="item.id">{{item}}</letter>
+    <letter
+      v-on:scratchedletter="deleteLetter"
+      :letter="item"
+      :index="index"
+      :revealed="revealed"
+      v-for="(item, index) in splitedTranslatedWordArray"
+      :key="item.id"
+    />
   </div>
 </template>
 <script>
@@ -12,6 +19,9 @@ export default {
     translatedText: {
       default: "",
       type: String
+    },
+    revealed: {
+      default: []
     }
   },
   components: {
@@ -19,8 +29,12 @@ export default {
   },
   computed: {
     splitedTranslatedWordArray: function() {
-      print(this.translatedText.toUpperCase().split(""));
       return this.translatedText.toUpperCase().split("");
+    }
+  },
+  methods: {
+    deleteLetter: function(letter) {
+      this.$emit("scratchletter", letter);
     }
   }
 };
@@ -30,5 +44,6 @@ export default {
 <style scoped lang="scss">
 .container2 {
   background-color: white;
+  display: flex;
 }
 </style>

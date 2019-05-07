@@ -3,21 +3,15 @@
     <form v-on:submit="formSubmit">
       <input v-model="word" placeholder="Write word here" type="text" name="firstname">
       <input type="submit" value="Translate">
+      {{word}}
     </form>
-    <letter v-for="item in splitedwordarray">{{item}}</letter>
   </div>
 </template>
 <script>
-import Letter from "./Letter.vue";
-
 export default {
   name: "Translate",
-  components: {
-    Letter
-  },
-  props: {
-    msg: String
-  },
+  components: {},
+
   data: function() {
     return {
       translation: 0,
