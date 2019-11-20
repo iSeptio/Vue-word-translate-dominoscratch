@@ -18,11 +18,6 @@ export default {
     }
   },
   props: ["letter", "index", "revealed"],
-  data: function() {
-    return {
-      stillUnclicked: true
-    };
-  },
   computed: {
     pokazLitere: function() {
       if (this.revealed.indexOf(this.letter[1]) > -1) {

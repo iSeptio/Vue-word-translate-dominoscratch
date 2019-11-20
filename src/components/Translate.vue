@@ -1,9 +1,14 @@
 <template>
   <div class="container">
     <form v-on:submit="formSubmit">
-      <input v-model="word" placeholder="Write word here" type="text" name="firstname">
-      <input type="submit" value="Translate">
-      {{word}}
+      <input
+        class="inputing"
+        v-model="word"
+        placeholder="What to generate?"
+        type="text"
+        name="translator"
+      >
+      <input class="buttonclass" type="submit" value="Przetłumacz">
     </form>
   </div>
 </template>
@@ -14,13 +19,13 @@ export default {
 
   data: function() {
     return {
-      translation: 0,
       word: ""
     };
   },
   methods: {
     formSubmit(e) {
       this.$emit("formSubmit", this.word);
+      this.word = "";
       e.preventDefault();
     }
   },
@@ -34,10 +39,22 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.inputing {
+  appearance: none;
+  background-color: white;
+  border: 0;
+  cursor: pointer;
+  height: 40px;
+  outline: none;
+  padding: 0 20px;
+  transition: all 0.5s ease;
+  margin-right: 10px;
+}
 .container {
   position: relative;
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 .translateparagraphTriger {
   border: 5px grey solid;
@@ -51,5 +68,18 @@ export default {
 }
 .rightcontent {
   width: 80%;
+}
+
+.buttonclass {
+  appearance: none;
+  background-color: white;
+  color: #00dbde;
+  border: 0;
+  cursor: pointer;
+  height: 40px;
+  outline: none;
+  padding: 0 20px;
+  transition: all 0.5s ease;
+  margin-right: 10px;
 }
 </style>

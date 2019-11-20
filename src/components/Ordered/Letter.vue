@@ -19,17 +19,8 @@ export default {
     }
   },
   props: ["letter", "index", "revealed"],
-  data: function() {
-    return {
-      pokazacLitere: false,
-      zostaloNajechane: false
-    };
-  },
   computed: {
     pokazLitere: function() {
-      if (this.zostaloNajechane) {
-        return true;
-      }
       if (this.revealed.indexOf(this.index) > -1) {
         return true;
       } else {
